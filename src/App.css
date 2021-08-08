@@ -1,3 +1,185 @@
-.App {
-  text-align: center;
+/* .App {
+  margin: auto;
+  width: 100%;
+  max-width: 50rem;
+} */
+
+h2 {
+  margin: 0 0.25rem 0.35rem 0.25rem;
+  padding-top: 3rem;
+  /* color: cornsilk; */
+}
+
+input.searchbar {
+  width: 100%;
+  height: 1.5em;
+  border: lightgray solid 0.1rem;
+  color: grey;
+  outline: none;
+  font-size: large;
+  position: fixed;
+  margin-left: 0.26rem;
+  z-index: 2;
+}
+
+.summary-bar {
+  margin: 0.25rem 0.25rem 0.35rem 0.25rem;
+  font-size: small;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: black;
+}
+
+.summary-bar > span {
+  margin-right: 0.75rem;
+}
+
+.books .book {
+  background-color: honeydew;
+  border: gainsboro solid 0.1rem;
+  margin: 1rem 0 0.35rem 0.25rem;
+  padding: 0.25rem 0 0.35rem 0.25rem;
+  display: flex;
+}
+
+.book .book-image {
+  max-width: 20%;
+  min-width: 20%;
+}
+
+.book-image .image {
+  background-image: linear-gradient(#af2525, #9198e5);
+  min-height: 7em;
+  margin-right: 1em;
+}
+
+.book-image .status {
+  font-size: 8pt;
+  margin-right: 1em;
+}
+
+.book-details {
+  margin-right: 1em;
+}
+
+.book-details .description {
+  font-size: small;
+}
+
+.title {
+  color: black;
+  margin-bottom: 0.2rem;
+}
+
+.author {
+  color: orangered;
+}
+
+.book .booktags {
+  margin-top: 0.5rem;
+}
+
+.book .booktags > button:focus {
+  background-color: olive;
+  color: cornsilk;
+}
+
+.book .booktags > button:hover {
+  background-color: olive;
+  color: cornsilk;
+}
+
+.book .booktags > button {
+  background: rgb(235, 66, 5);
+  color: cornsilk;
+  margin-right: 0.25rem;
+  border: none;
+  height: 1rem;
+  border-radius: 5px;
+  font-size: 4pt;
+}
+
+.book .toolbar {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  background-color: ivory;
+}
+
+.book .toolbar > button {
+  background-color: ivory;
+  height: 5em;
+  border: none;
+  color: black;
+}
+
+.book .toolbar > button:hover {
+  background-color: lightcoral;
+  color: cornsilk;
+}
+
+.book .toolbar > button:focus {
+  background-color: rgb(109, 170, 5);
+  color: cornsilk;
+}
+
+.tooltip { /** Tooltip container */
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5px;
+  outline: none;
+}
+
+.tooltip .tooltip-text { /** tooltip text*/
+  visibility: hidden;
+  width: 2.5rem;
+  color: mintcream;
+  text-align: right;
+
+  /** Position the tooltip text*/
+  left: 100%;
+  z-index: 1;
+}
+
+.tooltip:hover .tooltip-text { /** Show the tooltip text when you mouse over the tooltip container*/
+  visibility: visible;
+}
+
+.tooltip .tooltip-text::before {
+  /* content: " "; */
+  position: absolute;
+  top: 100%;
+  bottom:10%;
+  margin-right: -5px;
+}
+
+.wastebasket::after {
+  content: "\1F5D1";
+  font-size: 35px;
+  display: block;
+}
+
+.page::after {
+  content: "\1F5CE";
+  font-size: 25px;
+  display: block;
+}
+
+.tag::after {
+  content: "\1F3F7";
+  font-size: 25px;
+  display: block;
+}
+
+.pencil::after {
+  content: "\1F589";
+  font-size: 25px;
+  display: block;
+}
+
+.group::after {
+  content: "\1F56E";
+  font-size: 25px;
+  display: block;
 }
