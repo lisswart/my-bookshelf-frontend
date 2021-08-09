@@ -13,17 +13,17 @@ function App() {
     fetch(`${baseURL}books`)
       .then(r => r.json())
       .then(books => {
-        console.log(books);
+        // console.log(books);
         setBooks(books);
       });
   }, []);
 
   return (
     <div className="App">
-      <SearchBar />
+      <SearchBar books={books} />
       <h2>My Bookshelf</h2>
       <SummaryBar books={books} />
-      <DisplayBooksPanel books={books} />
+      <DisplayBooksPanel books={books} setBooks={setBooks} />
     </div>
   );
 }

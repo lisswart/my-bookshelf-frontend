@@ -1,7 +1,7 @@
-function SearchBar() {
+function SearchBar({ books }) {
   return (
       <form>
-        <input className="searchbar" placeholder="Search" />
+        <input className="searchbar" placeholder="Search your bookshelf" />
       </form>
   )
 }

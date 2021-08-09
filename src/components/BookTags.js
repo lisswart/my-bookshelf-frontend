@@ -9,7 +9,7 @@ function BookTags({ book }) {
     fetch(`${baseURL}booktags/${book.id}`)
       .then(r => r.json())
       .then(book => {
-        console.log(book);
+        // console.log(book);
         const bookTags = book.tags.map(tag => tag.tag_name);
         setTags(bookTags);
       });

@@ -1,13 +1,10 @@
-import BookImage from './BookImage';
-import BookDetails from './BookDetails';
+
 import BookToolbar from './BookToolbar';
 
-function DisplayBook({ book }) {
+function DisplayBook({ book, editBook }) {
   return (
     <div className="book">
-      <BookImage book={book} />
-      <BookDetails book={book} />
-      <BookToolbar book={book} />
+      <BookToolbar book={book} editBook={editBook}/>
     </div>
   )
 }

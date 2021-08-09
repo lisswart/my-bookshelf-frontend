@@ -1,13 +1,12 @@
-/* .App {
+.App {
   margin: auto;
   width: 100%;
   max-width: 50rem;
-} */
+}
 
 h2 {
   margin: 0 0.25rem 0.35rem 0.25rem;
   padding-top: 3rem;
-  /* color: cornsilk; */
 }
 
 input.searchbar {
@@ -42,6 +41,34 @@ input.searchbar {
   display: flex;
 }
 
+.book-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-form > textarea {
+  min-height: 6rem;
+}
+
+.edit-form > button {
+  height: 1.1rem;
+}
+
+.form-buttons {
+  margin-top: 0.5rem;
+  display: flex;
+}
+
+.book-image {
+  margin-left: auto;
+}
+
 .book .book-image {
   max-width: 20%;
   min-width: 20%;
@@ -59,6 +86,7 @@ input.searchbar {
 }
 
 .book-details {
+  width: 100%;
   margin-right: 1em;
 }
 
@@ -102,7 +130,7 @@ input.searchbar {
 .book .toolbar {
   display: flex;
   flex-direction: column;
-  margin-left: auto;
+  margin-right: 1em;
   background-color: ivory;
 }
 
@@ -121,37 +149,6 @@ input.searchbar {
 .book .toolbar > button:focus {
   background-color: rgb(109, 170, 5);
   color: cornsilk;
-}
-
-.tooltip { /** Tooltip container */
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 5px;
-  outline: none;
-}
-
-.tooltip .tooltip-text { /** tooltip text*/
-  visibility: hidden;
-  width: 2.5rem;
-  color: mintcream;
-  text-align: right;
-
-  /** Position the tooltip text*/
-  left: 100%;
-  z-index: 1;
-}
-
-.tooltip:hover .tooltip-text { /** Show the tooltip text when you mouse over the tooltip container*/
-  visibility: visible;
-}
-
-.tooltip .tooltip-text::before {
-  /* content: " "; */
-  position: absolute;
-  top: 100%;
-  bottom:10%;
-  margin-right: -5px;
 }
 
 .wastebasket::after {
@@ -178,8 +175,53 @@ input.searchbar {
   display: block;
 }
 
+/* "\1F4DA" */
 .group::after {
   content: "\1F56E";
   font-size: 25px;
   display: block;
+}
+
+.wrapper {
+  position: relative;
+  display: inline-block;
+  border: none;
+  font-size: 14px;
+}
+
+.wrapper input {
+  border: 0;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  position: absolute !important;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  opacity: 0;
+}
+
+.wrapper label {
+  position: relative;
+  float: right;
+  color: #C8C8C8;
+}
+
+.wrapper label:before {
+  margin: 1px;
+  content: "\2B50";
+  display: inline-block;
+  font-size: 1em;
+  color: rgb(37, 179, 245);
+}
+
+.wrapper input:checked ~ label:before {
+  color: #07a4ff;
+}
+
+.wrapper label:hover ~ label:before {
+  color: #70cbff;
+}
+
+.wrapper label:hover:before {
+  color: #0772ff;
 }
