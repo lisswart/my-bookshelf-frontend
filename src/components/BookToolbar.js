@@ -36,8 +36,9 @@ function BookToolbar({ book, editBook, books, setBooks }) {
     })
       .then(r => r.json())
       .then(() => {
-        const updatedBooks = books.filter(book => book.id !== bookId);
-        setBooks(updatedBooks);
+        const updatedBooks = books.filter(book => 
+            book.id !== bookId);
+          setBooks(updatedBooks);
       });
   }
 
