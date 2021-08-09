@@ -2,7 +2,7 @@ import { useState } from 'react';
 import BookImage from './BookImage';
 import BookDetails from './BookDetails';
 
-function BookToolbar({ book, editBook }) {
+function BookToolbar({ book, editBook, books, setBooks }) {
 
   const [ isOnEditMode, setIsOnEditMode ] = useState(false);
   const [ isAddNote, setIsAddNote ] = useState(false);
@@ -27,7 +27,18 @@ function BookToolbar({ book, editBook }) {
   }
 
   function handleDeleteBookClick() {
+    deleteBook(book.id);
+  }
 
+  function deleteBook(bookId) {
+    fetch(`http://localhost:9393/books/${bookId}`, {
+      method: "DELETE"
+    })
+      .then(r => r.json())
+      .then(() => {
+        const updatedBooks = books.filter(book => book.id !== bookId);
+        setBooks(updatedBooks);
+      });
   }
 
   return (
@@ -51,6 +62,7 @@ function BookToolbar({ book, editBook }) {
         editBook={editBook}
         isAddNote={isAddNote}
         isAddTag={isAddTag}
+        setIsAddTag={setIsAddTag}
         isAddGroup={isAddGroup} />
       <BookImage book={book} />
     </div>

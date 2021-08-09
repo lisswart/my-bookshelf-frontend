@@ -13,6 +13,7 @@ function BookTags({ book }) {
         const bookTags = book.tags.map(tag => tag.tag_name);
         setTags(bookTags);
       });
+      // need to add a cleanup function
   }, [book.id]);
 
   return (

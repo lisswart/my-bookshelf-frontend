@@ -6,7 +6,7 @@ import TagForm from './TagForm';
 import GroupForm from './GroupForm';
 
 function BookDetails({ book, isOnEditMode,
-  isAddNote, isAddTag, isAddGroup,
+  isAddNote, isAddTag, setIsAddTag, isAddGroup,
   setIsOnEditMode, editBook }) {
 
   return (
@@ -27,7 +27,7 @@ function BookDetails({ book, isOnEditMode,
               }
               {
                 isAddTag
-                ? <TagForm book={book} />
+                ? <TagForm book={book} setIsAddTag={setIsAddTag} />
                 : <></>
               }
               {

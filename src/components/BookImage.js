@@ -14,6 +14,7 @@ function BookImage({ book }) {
         const readStatus = book.read_status;
         setStatus(readStatus);
       });
+      // need to add a cleanup function
   }, [book.id]);
 
   return (

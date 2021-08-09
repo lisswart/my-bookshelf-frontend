@@ -4,9 +4,19 @@
   max-width: 50rem;
 }
 
+.h2-add-book-wrapper {
+  display: flex;
+}
+
 h2 {
-  margin: 0 0.25rem 0.35rem 0.25rem;
-  padding-top: 3rem;
+  margin-left: 0.25rem;
+  margin-top: 3.5rem;
+  color: seashell;
+}
+
+.h2-add-book-wrapper > button {
+  margin: 3.5rem 0.25rem 0.35rem auto;
+  height: 2rem;
 }
 
 input.searchbar {
@@ -21,12 +31,53 @@ input.searchbar {
   z-index: 2;
 }
 
+.add-book-form {
+  display: flex;
+  flex-direction: column;
+  margin: 0.25rem 0.25rem 0.35rem 0.25rem;
+}
+
+.add-book-form > label {
+  color: seashell;
+}
+
+.add-book-form > textarea {
+  min-height: 15rem;
+}
+
+.add-book-form-buttons-wrapper > input[type=submit] {
+  background-color: lavenderblush;
+  color:slategrey;
+  border: none;
+  margin: 2rem 2rem 0 0;
+  height: 1.5rem;
+  border-radius: 5px;
+}
+
+.add-book-form-buttons-wrapper > input[type=submit]:hover {
+  background-color: rosybrown;
+  color: seashell;
+}
+
+.add-book-form-buttons-wrapper > button {
+  background-color: lavenderblush;
+  color:slategrey;
+  border: none;
+  height: 1.5rem;
+  border-radius: 5px;
+}
+
+.add-book-form-buttons-wrapper > button:hover {
+  background-color: rosybrown;
+  color: seashell;
+}
+
 .summary-bar {
   margin: 0.25rem 0.25rem 0.35rem 0.25rem;
   font-size: small;
   font-weight: bold;
   margin-bottom: 1rem;
-  color: black;
+  color: mintcream;
 }
 
 .summary-bar > span {
