@@ -8,5 +8,6 @@ body {
   background-color: aliceblue;
   color: black;
   box-sizing: border-box;
-  background-color: #9198e5;
+  background-image: radial-gradient(lavenderblush, black);
+  /* background-color: #9198e5; */
 }

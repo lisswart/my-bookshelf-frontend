@@ -5,7 +5,8 @@ function AddBookForm({ isAddBook, setIsAddBook, books, setBooks }) {
   const [ formState, setFormState ] = useState({
     book_title: "",
     book_author: "",
-    book_description: ""
+    book_description: "",
+    book_group: ""
   });
 
   function addBook(book) {
@@ -63,6 +64,10 @@ function AddBookForm({ isAddBook, setIsAddBook, books, setBooks }) {
         <textarea onChange={handleEntryChange}
           name="book_description" 
           value={formState.book_description} />
+
+        <label>Group: </label>
+        <input type="text" onChange={handleEntryChange}
+          name="book_group" value={formState.book_group} />
 
         <div className="add-book-form-buttons-wrapper">
           <input type="submit" value="Add" />

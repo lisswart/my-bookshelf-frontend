@@ -3,9 +3,10 @@ import { useState } from 'react';
 function EditForm({ book, setIsOnEditMode, editBook }) {
 
   const [ formState, setFormState ] = useState({
-    book_title: "",
-    book_author: "",
-    book_description: ""
+    book_title: book.book_title,
+    book_author: book.book_author,
+    book_description: book.book_description,
+    notes: book.notes
   });
 
   function handleEntryChange(event) {

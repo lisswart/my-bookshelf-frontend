@@ -4,10 +4,25 @@ import EditForm from './EditForm';
 import NoteForm from './NoteForm';
 import TagForm from './TagForm';
 import GroupForm from './GroupForm';
+import NotePage from './NotePage';
 
-function BookDetails({ book, isOnEditMode,
-  isAddNote, isAddTag, setIsAddTag, isAddGroup,
-  setIsOnEditMode, editBook }) {
+function BookDetails({ book, isOnEditMode, editBook,
+  isAddNote, setIsAddNote, isAddTag, setIsAddTag, 
+  isAddGroup, setIsOnEditMode }) {
+
+    // function editBook(bookId, bookEdits) {
+    //   console.log("first", bookEdits);
+    //   fetch(`http://localhost:9393/books/${bookId}`, {
+    //     method: "PATCH",
+    //     headers: { 'Content-Type': 'application/json' },
+    //     body: JSON.stringify(bookEdits)
+    //   })
+    //     .then(r => r.json())
+    //     .then(editedBook => {
+    //       console.log(editedBook);
+    //       setEditedBook(editedBook);
+    //     });
+    // }  
 
   return (
     <div className="book-details">
@@ -22,12 +37,15 @@ function BookDetails({ book, isOnEditMode,
           : <div>
               {
                 isAddNote
-                ? <NoteForm book={book} />
+                ? <NoteForm book={book} 
+                    isAddNote={isAddNote} 
+                    setIsAddNote={setIsAddNote} />
                 : <></>
               }
               {
                 isAddTag
-                ? <TagForm book={book} setIsAddTag={setIsAddTag} />
+                ? <TagForm book={book} 
+                    setIsAddTag={setIsAddTag} />
                 : <></>
               }
               {
@@ -40,7 +58,12 @@ function BookDetails({ book, isOnEditMode,
           <div className="desc-tags-wrapper">
               <BookDescription book={book} />
               <BookTags book={book} />
-          </div>       
+          </div> 
+          {
+            book.is_notes_added
+            ? <NotePage book={book} />
+            : <></>               
+          }   
       </div>
     </div>
   )

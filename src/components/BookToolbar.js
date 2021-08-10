@@ -62,6 +62,7 @@ function BookToolbar({ book, editBook, books, setBooks }) {
         setIsOnEditMode={setIsOnEditMode}
         editBook={editBook}
         isAddNote={isAddNote}
+        setIsAddNote={setIsAddNote}
         isAddTag={isAddTag}
         setIsAddTag={setIsAddTag}
         isAddGroup={isAddGroup} />
