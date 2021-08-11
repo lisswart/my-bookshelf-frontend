@@ -9,9 +9,10 @@ import { useEffect, useState } from 'react';
 
 function BookDetails({ book, isOnEditMode, editBook,
   isAddNote, setIsAddNote, isAddTag, setIsAddTag, 
-  isAddGroup, setIsOnEditMode }) {
+  isAddGroup, setIsOnEditMode, addNotes }) {
 
-    const baseURL = 'http://localhost:9393/';
+  const baseURL = 'http://localhost:9393/';
+  const [ isNotePage, setIsNotePage ] = useState(book.is_notes_added);
 
     const [ tags, setTags ] = useState([]);
 
@@ -42,7 +43,9 @@ function BookDetails({ book, isOnEditMode, editBook,
                 isAddNote
                 ? <NoteForm book={book} 
                     isAddNote={isAddNote} 
-                    setIsAddNote={setIsAddNote} />
+                    setIsAddNote={setIsAddNote}
+                    addNotes={addNotes}
+                    setIsNotePage={setIsNotePage} />
                 : <></>
               }
               {
@@ -63,7 +66,7 @@ function BookDetails({ book, isOnEditMode, editBook,
               <BookTags tags={tags} />
           </div> 
           {
-            book.is_notes_added
+            isNotePage
             ? <NotePage book={book} />
             : <></>               
           }   

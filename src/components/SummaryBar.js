@@ -32,12 +32,10 @@ function SummaryBar({ books, setBooks }) {
   }
 
   function filterBooksByGroup(event) {
-    
+    const filteredBooks = books.filter(book => book.book_group === event.target.value);
     setBooks(filteredBooks);
     setIsFilterOn(!isFilterOn);
-    return filteredBooks;
   }
-  const filteredBooks = books.filter(book => book.book_group === "fiction")
 
   return (
     <div className="summary-bar">
