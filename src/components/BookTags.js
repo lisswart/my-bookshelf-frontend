@@ -1,20 +1,20 @@
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 
-function BookTags({ book }) {
-  const baseURL = 'http://localhost:9393/';
+function BookTags({ tags }) {
+  // const baseURL = 'http://localhost:9393/';
 
-  const [ tags, setTags ] = useState([])
+  // const [ tags, setTags ] = useState([])
 
-  useEffect(() => {
-    fetch(`${baseURL}booktags/${book.id}`)
-      .then(r => r.json())
-      .then(book => {
-        // console.log(book);
-        const bookTags = book.tags.map(tag => tag.tag_name);
-        setTags(bookTags);
-      });
-      // need to add a cleanup function
-  }, [book.id]);
+  // useEffect(() => {
+  //   fetch(`${baseURL}booktags/${book.id}`)
+  //     .then(r => r.json())
+  //     .then(book => {
+  //       // console.log(book);
+  //       const bookTags = book.tags.map(tag => tag.tag_name);
+  //       setTags(bookTags);
+  //     });
+  //     // need to add a cleanup function
+  // }, [book.id]);
 
   return (
     <div className="booktags">

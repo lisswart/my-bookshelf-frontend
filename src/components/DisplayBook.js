@@ -1,4 +1,3 @@
-
 import BookToolbar from './BookToolbar';
 
 function DisplayBook({ book, editBook, books, setBooks }) {

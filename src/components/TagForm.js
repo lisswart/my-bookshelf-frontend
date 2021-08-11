@@ -1,12 +1,22 @@
 import { useState } from 'react';
 
-function TagForm({ book, setIsAddTag, isAddTag }) {
+function TagForm({ tags, setIsAddTag, isAddTag }) {
 
-  
+  const baseURL = 'http://localhost:9393/';
 
   const [ formState, setFormState ] = useState({
-    tags: book.tags
+    tags: tags
   });
+
+  function addTags(tags) {
+    fetch(`${baseURL}add-tags`, {
+      method: "POST",
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(tags)
+    })
+      .then(r => r.json())
+      .then(tags => console.log(tags));
+  }
 
   function handleEntryChange(event) {
     const fieldName = event.target.name;
@@ -19,10 +29,8 @@ function TagForm({ book, setIsAddTag, isAddTag }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    // const tags = {
-    //   tags: formState.tags
-    // }
-    // editTags(tags);
+    const tags = {tag_name: formState.tags};
+    tags.forEach(tag => addTags(tag))
     setIsAddTag(!isAddTag);
   }
 

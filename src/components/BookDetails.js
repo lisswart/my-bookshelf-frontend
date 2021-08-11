@@ -5,25 +5,28 @@ import NoteForm from './NoteForm';
 import TagForm from './TagForm';
 import GroupForm from './GroupForm';
 import NotePage from './NotePage';
+import { useEffect, useState } from 'react';
 
 function BookDetails({ book, isOnEditMode, editBook,
   isAddNote, setIsAddNote, isAddTag, setIsAddTag, 
   isAddGroup, setIsOnEditMode }) {
 
-    // function editBook(bookId, bookEdits) {
-    //   console.log("first", bookEdits);
-    //   fetch(`http://localhost:9393/books/${bookId}`, {
-    //     method: "PATCH",
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify(bookEdits)
-    //   })
-    //     .then(r => r.json())
-    //     .then(editedBook => {
-    //       console.log(editedBook);
-    //       setEditedBook(editedBook);
-    //     });
-    // }  
+    const baseURL = 'http://localhost:9393/';
 
+    const [ tags, setTags ] = useState([]);
+
+    useEffect(() => {
+      fetch(`${baseURL}booktags/${book.id}`)
+        .then(r => r.json())
+        .then(book => {          
+          const bookTags = book.tags.map(tag => tag.tag_name);
+          setTags(bookTags);
+        });
+        // need to add a cleanup function
+    }, [book.id]);
+
+    // function editTags()
+    
   return (
     <div className="book-details">
       <div className="title"><em><strong>{book.book_title}</strong></em></div>
@@ -44,7 +47,7 @@ function BookDetails({ book, isOnEditMode, editBook,
               }
               {
                 isAddTag
-                ? <TagForm book={book} 
+                ? <TagForm tags={tags} 
                     setIsAddTag={setIsAddTag} />
                 : <></>
               }
@@ -57,7 +60,7 @@ function BookDetails({ book, isOnEditMode, editBook,
         }
           <div className="desc-tags-wrapper">
               <BookDescription book={book} />
-              <BookTags book={book} />
+              <BookTags tags={tags} />
           </div> 
           {
             book.is_notes_added

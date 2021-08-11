@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import SearchBar from './components/SearchBar';
 import SummaryBar from './components/SummaryBar';
-import DisplayBooksPanel from './components/DisplayBooksPanel';
 import AddBookForm from './components/AddBookForm';
 
 function App() {
@@ -29,9 +28,11 @@ function App() {
       <div className="h2-add-book-wrapper">
         <h2>My Bookshelf</h2>
         <button onClick={handleAddBookClick}
+          className="group"
           style={ {backgroundColor: "lavenderblush", 
-          border: "none", borderRadius: "5px"} }>
-            ➕
+          border: "none", borderRadius: "5px", 
+          height: "3rem"} }>
+            Add
         </button>
       </div>
       {
@@ -40,11 +41,7 @@ function App() {
             setIsAddBook={setIsAddBook}
             books={books}
             setBooks={setBooks} />
-        : <>
-            <SummaryBar books={books} />
-            <DisplayBooksPanel books={books} 
-              setBooks={setBooks} />
-          </>
+        : <SummaryBar books={books} setBooks={setBooks} />
       }
       
     </div>

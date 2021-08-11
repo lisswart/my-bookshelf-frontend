@@ -10,7 +10,8 @@ function NotePage({ book }) {
       {
         notes === ""
         ? <></>
-        : lines.map((line, i) => <p key={i}>{line}</p>)
+        : lines.map((line, i) => <p key={i} 
+            className="lines">{line}</p>)
       }
     </div>
   )

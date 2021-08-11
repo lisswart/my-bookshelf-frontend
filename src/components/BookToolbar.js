@@ -7,7 +7,7 @@ function BookToolbar({ book, editBook, books, setBooks }) {
   const [ isOnEditMode, setIsOnEditMode ] = useState(false);
   const [ isAddNote, setIsAddNote ] = useState(false);
   const [ isAddTag, setIsAddTag ] = useState(false);
-  const [ isAddGroup, setIsAddGroup ] = useState(false);
+  // const [ isAddGroup, setIsAddGroup ] = useState(false);
 
 
   function handleEditClick() {
@@ -22,9 +22,9 @@ function BookToolbar({ book, editBook, books, setBooks }) {
     setIsAddTag(!isAddTag);
   }
 
-  function handleAddGroupClick() {
-    setIsAddGroup(!isAddGroup);
-  }
+  // function handleAddGroupClick() {
+  //   setIsAddGroup(!isAddGroup);
+  // }
 
   function handleDeleteBookClick() {
     deleteBook(book.id);
@@ -51,8 +51,8 @@ function BookToolbar({ book, editBook, books, setBooks }) {
           onClick={handleAddNoteClick}></button>
         <button className="tag"
           onClick={handleAddTagClick}></button>
-        <button className="group"
-        onClick={handleAddGroupClick}></button>
+        {/* <button className="group"
+        onClick={handleAddGroupClick}></button> */}
         <button className="wastebasket" 
           onClick={handleDeleteBookClick}></button>
       </div>
@@ -65,7 +65,8 @@ function BookToolbar({ book, editBook, books, setBooks }) {
         setIsAddNote={setIsAddNote}
         isAddTag={isAddTag}
         setIsAddTag={setIsAddTag}
-        isAddGroup={isAddGroup} />
+        // isAddGroup={isAddGroup} 
+        />
       <BookImage book={book} />
     </div>
   );

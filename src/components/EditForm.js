@@ -6,6 +6,7 @@ function EditForm({ book, setIsOnEditMode, editBook }) {
     book_title: book.book_title,
     book_author: book.book_author,
     book_description: book.book_description,
+    book_group: book.book_group,
     notes: book.notes
   });
 
@@ -29,15 +30,11 @@ function EditForm({ book, setIsOnEditMode, editBook }) {
     const bookEdits = {
       book_title: formState.book_title,
       book_author: formState.book_author,
-      book_description: formState.book_description
+      book_description: formState.book_description,
+      book_group: formState.book_group
     };
     editBook(book.id, bookEdits);
     setIsOnEditMode(false);
-    setFormState({
-      book_title: "",
-      book_author: "",
-      book_description: ""
-    });
   }
 
   return (
@@ -58,6 +55,11 @@ function EditForm({ book, setIsOnEditMode, editBook }) {
         <textarea onChange={handleEntryChange}
           name="book_description"
           value={formState.book_description} />
+
+        <label>Group: </label>
+        <input type="text" onChange={handleEntryChange} 
+          name="book_group" 
+          value={formState.book_group}/>
 
         <div className="form-buttons">
           <input type="submit" />

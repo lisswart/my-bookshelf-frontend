@@ -1,6 +1,6 @@
 import DisplayBook from "./DisplayBook";
 
-function DisplayBooksPanel({ books, setBooks }) {
+function DisplayBooksPanel({ books, setBooks, filteredBooks }) {
 
   function editBook(bookId, bookEdits) {
     console.log("first", bookEdits);
@@ -26,7 +26,7 @@ function DisplayBooksPanel({ books, setBooks }) {
       {books.map(book => 
         <DisplayBook key={book.id} book={book} 
           books={books} setBooks={setBooks}
-          editBook={editBook} />
+          editBook={editBook}/>
       )}
     </div>
   )
