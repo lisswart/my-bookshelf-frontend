@@ -1,5 +1,4 @@
 import { useState } from 'react';
-// import DisplayBook from './DisplayBook';
 import DisplayBooksPanel from './DisplayBooksPanel';
 
 function SummaryBar({ books, setBooks }) {
@@ -31,14 +30,6 @@ function SummaryBar({ books, setBooks }) {
   for(let i=0; i < uniques.size; ++i) {
     array.push(iterableSet.next().value);
   }
-  
-  // useEffect(() => {
-  //   console.log(bookGroups);
-  //   console.log(uniques);
-  //   console.log(iterableSet);
-  //   console.log(array);
-  //   console.log(groupedBooks);
-  // }, [array, groupedBooks, bookGroups, iterableSet, uniques]);
 
   function filterBooksByGroup(event) {
     
@@ -47,7 +38,6 @@ function SummaryBar({ books, setBooks }) {
     return filteredBooks;
   }
   const filteredBooks = books.filter(book => book.book_group === "fiction")
-
 
   return (
     <div className="summary-bar">
