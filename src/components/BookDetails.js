@@ -5,24 +5,13 @@ import NoteForm from './NoteForm';
 import TagForm from './TagForm';
 import GroupForm from './GroupForm';
 import NotePage from './NotePage';
+import { useState } from 'react';
 
 function BookDetails({ book, isOnEditMode, editBook,
   isAddNote, setIsAddNote, isAddTag, setIsAddTag, 
-  isAddGroup, setIsOnEditMode }) {
+  isAddGroup, setIsOnEditMode, addNotes }) {
 
-    // function editBook(bookId, bookEdits) {
-    //   console.log("first", bookEdits);
-    //   fetch(`http://localhost:9393/books/${bookId}`, {
-    //     method: "PATCH",
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify(bookEdits)
-    //   })
-    //     .then(r => r.json())
-    //     .then(editedBook => {
-    //       console.log(editedBook);
-    //       setEditedBook(editedBook);
-    //     });
-    // }  
+  const [ isNotePage, setIsNotePage ] = useState(book.is_notes_added);
 
   return (
     <div className="book-details">
@@ -39,7 +28,9 @@ function BookDetails({ book, isOnEditMode, editBook,
                 isAddNote
                 ? <NoteForm book={book} 
                     isAddNote={isAddNote} 
-                    setIsAddNote={setIsAddNote} />
+                    setIsAddNote={setIsAddNote}
+                    addNotes={addNotes}
+                    setIsNotePage={setIsNotePage} />
                 : <></>
               }
               {
@@ -60,7 +51,7 @@ function BookDetails({ book, isOnEditMode, editBook,
               <BookTags book={book} />
           </div> 
           {
-            book.is_notes_added
+            isNotePage
             ? <NotePage book={book} />
             : <></>               
           }   

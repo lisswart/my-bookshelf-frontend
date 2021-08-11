@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
-function NoteForm({ book, isAddNote, setIsAddNote }) {
+function NoteForm({ book, isAddNote, setIsAddNote, addNotes, setIsNotePage }) {
 
   const [ formState, setFormState ] = useState({
     book_title: book.book_title,
@@ -11,29 +11,29 @@ function NoteForm({ book, isAddNote, setIsAddNote }) {
     notes: book.notes
   });
 
-  function addNotes(notes) {
-    fetch(`http://localhost:9393/books/${book.id}`, {
-      method: "PATCH",
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(notes)
-    })
-      .then(r => r.json())
-      .then(book => {
+  // function addNotes(notes) {
+  //   fetch(`http://localhost:9393/books/${book.id}`, {
+  //     method: "PATCH",
+  //     headers: { 'Content-Type': 'application/json' },
+  //     body: JSON.stringify(notes)
+  //   })
+  //     .then(r => r.json())
+  //     .then(book => {
         
-      });
-  }
+  //     });
+  // }
 
-  useEffect(() => {
-    fetch(`http://localhost:9393/books/${book.id}`)
-      .then(r => r.json())
-      .then(book => {
-        console.log(book);
-        // setBook(book);
-      }) 
-    // return () => {
-    //   cleanup
-    // }
-  }, [book])
+  // useEffect(() => {
+  //   fetch(`http://localhost:9393/books/${book.id}`)
+  //     .then(r => r.json())
+  //     .then(book => {
+  //       console.log(book);
+  //       // setBook(book);
+  //     }) 
+  //   // return () => {
+  //   //   cleanup
+  //   // }
+  // }, [book])
 
   function handleEntryChange(event) {
     const fieldName = event.target.name;
@@ -54,8 +54,9 @@ function NoteForm({ book, isAddNote, setIsAddNote }) {
         book_group: book.book_group,
         is_notes_added: true,
         notes: formState.notes };
-      addNotes(notes);
+      addNotes(book.id, notes);
       setIsAddNote(!isAddNote);
+      setIsNotePage(notes.is_notes_added);
     } else {
       const notes = { 
         book_title: book.book_title,
