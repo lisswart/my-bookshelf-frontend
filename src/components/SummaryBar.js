@@ -1,62 +1,88 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import DisplayBooksPanel from './DisplayBooksPanel';
+import { NavLink } from 'react-router-dom';
+import Group from './Group';
+import Tag from './Tag';
+import Status from './Status';
 
 function SummaryBar({ books, setBooks }) {
 
-  const [ isFilterOn, setIsFilterOn ] = useState(false);
+  const [ groups, setGroups ] = useState([])
+  const [ tags, setTags ] = useState([]);
+  const [ statuses, setStatuses ] = useState([]);
 
-  function groupBy(books, property) {
-    return books.reduce((group, currentBook) => {
-      let key = currentBook[property];
-      if(!group[key]) {
-        group[key] = [];
-      }
-      group[key].push(currentBook);
-      return group;
-    }, {});
+  useEffect(() => {
+    fetch('http://localhost:9393/statuses')
+      .then(r => r.json())
+      .then(statuses => {
+        console.log(statuses);
+        setStatuses(statuses);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch('http://localhost:9393/tags')
+      .then(r => r.json())
+      .then(tags => {
+        console.log(tags);
+        setTags(tags);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch('http://localhost:9393/groups')
+      .then(r => r.json())
+      .then(groups => {
+        console.log(groups);
+        setGroups(groups);
+      });
+  }, []);
+
+  function populateGroups() {
+    return groups.map(group => (
+        <Group key={group.id} group={group} 
+               setBooks={setBooks} />
+    ));
   }
 
-  const groupedBooks = groupBy(books, "book_group");
-  const groupList = Object.keys(groupedBooks);
-
-  const bookGroups = books.map(book => book.book_group);
-  const uniques = new Set();
-  for(let i=0; i < bookGroups.length; ++i) {
-    uniques.add(bookGroups[i]);
+  function populateTags() {
+    return tags.map(tag => (
+        <Tag key={tag.id} tag={tag} 
+             setBooks={setBooks} />
+    ));
   }
 
-  const iterableSet = uniques.values();
-  let array = [];
-  for(let i=0; i < uniques.size; ++i) {
-    array.push(iterableSet.next().value);
+  function populateStatuses() {
+    return statuses.map(status => (
+        <Status key={status.id} status={status} 
+                setBooks={setBooks}/>
+    ));
   }
 
-  function filterBooksByGroup(event) {
-    const filteredBooks = books.filter(book => book.book_group === event.target.value);
-    setBooks(filteredBooks);
-    setIsFilterOn(!isFilterOn);
-  }
-
-  return (
+  return (    
     <div className="summary-bar">
-      <div>
-        <span>Books: {books.length} </span>
-        <span style={{paddingLeft: "1rem"}}>Grouplist: </span>
-        <select onChange={filterBooksByGroup}>
-          {
-            groupList.map((group, i) => 
-              <option key={i} value={group}>
-                {group}
-              </option>)
-          }
-        </select>
+
+      <NavLink to="/books" style={{marginLeft: "2rem"}}>
+        Books: {books.length}
+      </NavLink>
+
+      <div style={{display: "flex", paddingLeft: "2rem"}}>
+        <span className="groups-container" style={{ marginTop: "1rem"}}>
+          Groups/Series: {groups && populateGroups()}
+        </span>
+        <span className="tags-container" style={{ marginTop: "1rem", 
+          marginLeft: "2rem"}}>
+          Tags: {tags && populateTags()}
+        </span>
+        <div className="statuses-container" style={{ marginTop: "1rem", 
+          marginLeft: "2rem"}}>
+          Read Status: {statuses && populateStatuses()}
+        </div>
       </div>
-      <span>Not Begun: 10</span>
-      <span>In Progress: 5</span>
-      <span>Completed: 3</span>      
-        <DisplayBooksPanel books={books} 
-            setBooks={setBooks} />      
-    </div>
+            
+      <DisplayBooksPanel books={books} setBooks={setBooks} />
+
+    </div>    
   );
 }
 

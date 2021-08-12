@@ -1,10 +1,10 @@
 import DisplayBook from "./DisplayBook";
 
-function DisplayBooksPanel({ books, setBooks, filteredBooks }) {
+function DisplayBooksPanel({ books, setBooks }) {
 
   function editBook(bookId, bookEdits) {
     fetch(`http://localhost:9393/books/${bookId}`, {
-      method: "PATCH",
+      method: "PUT",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(bookEdits)
     })
@@ -22,7 +22,7 @@ function DisplayBooksPanel({ books, setBooks, filteredBooks }) {
 
   function addNotes(bookId, notes) {
     fetch(`http://localhost:9393/books/${bookId}`, {
-      method: "PATCH",
+      method: "PUT",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(notes)
     })

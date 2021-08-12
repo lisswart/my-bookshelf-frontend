@@ -1,6 +1,6 @@
 // import { useEffect, useState } from 'react';
 
-function BookTags({ tags }) {
+function BookTags({ booktags }) {
   // const baseURL = 'http://localhost:9393/';
 
   // const [ tags, setTags ] = useState([])
@@ -19,7 +19,7 @@ function BookTags({ tags }) {
   return (
     <div className="booktags">
       {
-        tags.map((tag, i) => <button key={i} className="tag selected"><strong>{tag}</strong></button>)
+        booktags.map((booktag, i) => <button key={i} className="tag selected"><strong>{booktag}</strong></button>)
       }
     </div>
   )

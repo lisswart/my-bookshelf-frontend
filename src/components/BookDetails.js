@@ -14,19 +14,17 @@ function BookDetails({ book, isOnEditMode, editBook,
   const baseURL = 'http://localhost:9393/';
   const [ isNotePage, setIsNotePage ] = useState(book.is_notes_added);
 
-    const [ tags, setTags ] = useState([]);
+    const [ booktags, setBooktags ] = useState([]);
 
     useEffect(() => {
       fetch(`${baseURL}booktags/${book.id}`)
         .then(r => r.json())
         .then(book => {          
           const bookTags = book.tags.map(tag => tag.tag_name);
-          setTags(bookTags);
+          setBooktags(bookTags);
         });
         // need to add a cleanup function
     }, [book.id]);
-
-    // function editTags()
     
   return (
     <div className="book-details">
@@ -50,7 +48,7 @@ function BookDetails({ book, isOnEditMode, editBook,
               }
               {
                 isAddTag
-                ? <TagForm tags={tags} 
+                ? <TagForm booktags={booktags} 
                     setIsAddTag={setIsAddTag} />
                 : <></>
               }
@@ -63,7 +61,7 @@ function BookDetails({ book, isOnEditMode, editBook,
         }
           <div className="desc-tags-wrapper">
               <BookDescription book={book} />
-              <BookTags tags={tags} />
+              <BookTags booktags={booktags} />
           </div> 
           {
             isNotePage

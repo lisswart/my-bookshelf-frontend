@@ -32,6 +32,7 @@ function TagForm({ tags, setIsAddTag, isAddTag }) {
     const tags = {tag_name: formState.tags};
     tags.forEach(tag => addTags(tag))
     setIsAddTag(!isAddTag);
+    addTags(tags);
   }
 
   return (
@@ -42,7 +43,7 @@ function TagForm({ tags, setIsAddTag, isAddTag }) {
           name="tags" value={formState.tags} />
       </form>
     </div>
-  )
+  );
 }
 
-export default TagForm
+export default TagForm;

@@ -11,9 +11,6 @@ function BookDescription({ book }) {
         <p key={i} className="description">{line}</p>)
       }
     </div>
-    // <p className="description">
-    //   {book.book_description}
-    // </p>
   );
 }
 

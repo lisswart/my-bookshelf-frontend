@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 function GroupForm() {
   return (
@@ -8,7 +8,7 @@ function GroupForm() {
         <input />
       </form>
     </div>
-  )
+  );
 }
 
-export default GroupForm
+export default GroupForm;

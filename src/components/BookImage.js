@@ -10,7 +10,6 @@ function BookImage({ book }) {
     fetch(`${baseURL}bookstatus/${book.id}`)
       .then(r => r.json())
       .then(book => {
-        // console.log(book);
         const readStatus = book.read_status;
         setStatus(readStatus);
       });

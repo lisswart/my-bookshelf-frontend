@@ -1,6 +1,6 @@
 .App {
   margin: auto;
-  width: 100%;
+  /* width: 100%; */
   max-width: 50rem;
 }
 
@@ -9,67 +9,85 @@
 }
 
 h2 {
-  margin-left: 0.25rem;
+  margin-left: 2rem;
   margin-top: 3.5rem;
   color: seashell;
 }
 
 .h2-add-book-wrapper > button {
-  margin: 3.5rem 0.25rem 0.35rem auto;
+  margin: auto 3rem 0.35rem 3rem;
   height: 2rem;
+  background-image: repeating-radial-gradient(lemonchiffon, rosybrown);
 }
 
 input.searchbar {
-  width: 100%;
+  width:97.5vmin;
   height: 1.5em;
-  border: lightgray solid 0.1rem;
+  background-color: antiquewhite;
+  border: none;
+  border-radius: 5px;
+  padding-left: 0.25rem;
   color: grey;
   outline: none;
   font-size: large;
   position: fixed;
-  margin-left: 0.26rem;
+  margin-left: 2rem;
   z-index: 2;
 }
 
 .add-book-form {
   display: flex;
   flex-direction: column;
-  margin: 0.25rem 0.25rem 0.35rem 0.25rem;
+  margin: 2rem 2rem 2rem 2rem;
 }
 
 .add-book-form > label {
-  color: seashell;
+  color: blue;
+  font-weight: bolder;
+  margin-top: 1rem;
 }
 
 .add-book-form > textarea {
   min-height: 15rem;
+  background-color: antiquewhite;
+  border-radius: 5px;
+  border: none;
+}
+
+.add-book-form > input[type=text] {
+  background-color: antiquewhite;
+  height: 1.5rem;
+  border: none;
+  border-radius: 5px;
 }
 
 .add-book-form-buttons-wrapper > input[type=submit] {
-  background-color: lavenderblush;
-  color:slategrey;
+  background-image: repeating-radial-gradient(lemonchiffon, rosybrown);  
+  color:rgb(37, 42, 48);
   border: none;
+  font-weight: bolder;
   margin: 2rem 2rem 0 0;
-  height: 1.5rem;
+  height: 1.75rem;
   border-radius: 5px;
 }
 
 .add-book-form-buttons-wrapper > input[type=submit]:hover {
   background-color: rosybrown;
-  color: seashell;
+  color: black;
 }
 
 .add-book-form-buttons-wrapper > button {
-  background-color: lavenderblush;
-  color:slategrey;
+  background-image: repeating-radial-gradient(lemonchiffon, rosybrown);  
+  color:rgb(37, 42, 48);
+  font-weight: bolder;
   border: none;
-  height: 1.5rem;
+  height: 1.75rem;
   border-radius: 5px;
 }
 
 .add-book-form-buttons-wrapper > button:hover {
   background-color: rosybrown;
-  color: seashell;
+  color: black;
 }
 
 .summary-bar {
@@ -84,11 +102,15 @@ input.searchbar {
   margin-right: 0.75rem;
 }
 
+.books {
+  margin: 2rem 2rem 2rem 2rem;
+}
+
 .books .book {
   background-image: linear-gradient(gray,rgb(34, 85, 180));
-  /* border: gainsboro solid 0.1rem; */
-  margin: 1rem 0 0.35rem 0.25rem;
-  padding: 0.25rem 0 0.35rem 0.25rem;
+  border-radius: 5px;  
+  margin: 1rem 0 0.35rem 0;
+  padding: 1rem 0 1rem 0;
   display: flex;
 }
 
@@ -159,12 +181,12 @@ input.searchbar {
 }
 
 .title {
-  color: blue;
+  color: aliceblue;
   margin-bottom: 0.2rem;
 }
 
 .author {
-  color: rgb(8, 63, 226);
+  color: honeydew;
 }
 
 .description {
@@ -205,12 +227,10 @@ input.searchbar {
   display: flex;
   flex-direction: column;
   margin-right: 1em;
-  background-image: repeating-radial-gradient(lemonchiffon, rosybrown);
-  /* background-color: ivory; */
+  background-image: linear-gradient(gray,rgb(34, 85, 180));
 }
 
 .book .toolbar > button {
-  /* background-color: ivory; */
   background-image: repeating-radial-gradient(lemonchiffon, rosybrown);
   height: 5em;
   border: none;
@@ -269,4 +289,27 @@ input.searchbar {
   color: black;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-weight: lighter;
+}
+
+.statuses {
+  display: flex;
+  margin-top: 1rem;
+}
+
+.status-filter {
+  margin-left: 2rem;
+  color: seashell;
+}
+
+.nav, a {
+  text-decoration: none;
+  color: antiquewhite;
+}
+
+.nav, a:visited {
+  color: darkblue;
+}
+
+.nav, a:hover {
+  color: maroon;
 }

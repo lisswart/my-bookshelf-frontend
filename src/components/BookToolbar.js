@@ -22,10 +22,6 @@ function BookToolbar({ book, editBook, books, setBooks, addNotes }) {
     setIsAddTag(!isAddTag);
   }
 
-  // function handleAddGroupClick() {
-  //   setIsAddGroup(!isAddGroup);
-  // }
-
   function handleDeleteBookClick() {
     deleteBook(book.id);
   }
