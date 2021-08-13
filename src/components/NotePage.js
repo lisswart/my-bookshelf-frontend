@@ -14,7 +14,7 @@ function NotePage({ book }) {
             className="lines">{line}</p>)
       }
     </div>
-  )
+  );
 }
 
 export default NotePage;

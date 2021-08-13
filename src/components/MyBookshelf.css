@@ -115,12 +115,8 @@ input.searchbar {
   background-color: royalblue;
 }
 
-.summary-bar > span {
-  margin-right: 0.75rem;
-}
-
 .taglist {  
-  margin: 0.25rem 0.25rem 0 0;
+  margin: 0.25rem 0.25rem 0.25rem 0;
   font-family: monospace;
 }
 

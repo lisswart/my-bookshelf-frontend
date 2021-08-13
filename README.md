@@ -4,7 +4,7 @@ bugs to fix:
  
 [x] fix bug on grouplist: it display each book twice (why?)
 
-[ ] fix bug on addBook form, clicking the cancel button still adds the a book to the database with empty strings for all fieldname
+[x] fix bug on addBook form, clicking the cancel button still adds the a book to the database with empty strings for all fieldname
 
 [ ] add a cleanup function in two useEffectHooks, one used in BookDescription, another in BookImage
  

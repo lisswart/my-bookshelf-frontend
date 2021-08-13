@@ -55,7 +55,7 @@ function NoteForm({ book, isAddNote, setIsAddNote, addNotes, setIsNotePage }) {
         <input type="submit" value="Add Notes" />
       </form>
     </div>
-  )
+  );
 }
 
-export default NoteForm
+export default NoteForm;

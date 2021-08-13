@@ -1,4 +1,3 @@
-
 function BookDescription({ book }) {
 
   const description = book.book_description;

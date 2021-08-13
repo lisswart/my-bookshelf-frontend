@@ -71,7 +71,7 @@ function EditForm({ book, setIsOnEditMode, editBook }) {
       </form>
       
     </div>
-  )
+  );
 }
 
-export default EditForm
+export default EditForm;

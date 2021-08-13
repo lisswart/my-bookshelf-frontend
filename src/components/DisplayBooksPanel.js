@@ -45,7 +45,7 @@ function DisplayBooksPanel({ books, setBooks }) {
           editBook={editBook} addNotes={addNotes} />
       )}
     </div>
-  )
+  );
 }
 
 export default DisplayBooksPanel;

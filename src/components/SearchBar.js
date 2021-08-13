@@ -3,7 +3,7 @@ function SearchBar({ books }) {
       <form>
         <input className="searchbar" placeholder="Search your bookshelf" />
       </form>
-  )
+  );
 }
 
 export default SearchBar;
