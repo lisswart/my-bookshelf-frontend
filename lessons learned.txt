@@ -2,7 +2,7 @@ flawed reasonings:
 
 (1) using useEffect to fetch a resource with id, that showed my lack of understanding of what useEffect does and how it does it, i.e. useEffect renders on initial load and re-renders after a variable inside its callback or anywhere inside the useEffect block changes.  I couldn't get useEffect to do what I wanted it to do, which is to render the value (which is an array) of an attribute of a hash returned by the fetch, because when I do that from inside BooksFilteredByStatus component, I couldn't make the fetch to be dependent on a user click. Fetching data only when a user click on something has to be done with a function that responds to an onClick event.
 
-(2) 
+(2) another lack of understanding of useEffect, in the context of fetching from an API, useEffect needs a cleanup function only when its callback uses a variable from its execution context.
 
 
 

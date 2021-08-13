@@ -74,33 +74,18 @@ input.searchbar {
   font-size: 12pt;
 }
 
-.add-book-form-buttons-wrapper > input[type=submit] {
-  background-image: repeating-radial-gradient(lemonchiffon, rosybrown);  
+.add-book-form > input[type=submit] {
+  background-image: repeating-radial-gradient(lemonchiffon, plum);  
   color:rgb(37, 42, 48);
   border: none;
   font-weight: bolder;
   font-size: 12pt;
-  margin: 2rem 2rem 0 0;
+  margin: 2rem 0 0 0;
   height: 1.75rem;
   border-radius: 5px;
 }
 
-.add-book-form-buttons-wrapper > input[type=submit]:hover {
-  background-color: rosybrown;
-  color: black;
-}
-
-.add-book-form-buttons-wrapper > button {
-  background-image: repeating-radial-gradient(lemonchiffon, rosybrown);  
-  color:rgb(37, 42, 48);
-  font-weight: bolder;
-  font-size: 12pt;
-  border: none;
-  height: 1.75rem;
-  border-radius: 5px;
-}
-
-.add-book-form-buttons-wrapper > button:hover {
+.add-book-form > input[type=submit]:hover {
   background-color: rosybrown;
   color: black;
 }
@@ -153,10 +138,6 @@ a:visited {
   background-image:repeating-radial-gradient(lemonchiffon, royalblue);
 }
 
-.sorted {
-  border-left: 0.25rem solid silver;
-}
-
 .books .book {
   background-image: linear-gradient(gray,rgb(34, 85, 180));
   border-radius: 5px;  
@@ -195,7 +176,7 @@ a:visited {
 .edit-form > input[type=submit] {
   height: 1.1rem;
   border: none;
-  background-color: yellow;
+  background-color: plum;
 }
 
 .form-buttons {
@@ -213,7 +194,6 @@ a:visited {
 }
 
 .book-image .image {
-  /* background-image: linear-gradient(#af2525, #9198e5); */
   background-image: linear-gradient(purple, orangered);
   min-height: 7em;
   margin-right: 1em;
@@ -285,7 +265,7 @@ a:visited {
 }
 
 .book .toolbar > button {
-  background-image: repeating-radial-gradient(lemonchiffon, rosybrown);
+  background-image: repeating-radial-gradient(lemonchiffon, plum);
   height: 5em;
   border: none;
   color: black;
@@ -337,7 +317,7 @@ a:visited {
 }
 
 .notepage {
-  background-color: moccasin;
+  background-color: lightgray;
   margin-top: 2rem;
   padding: 2rem;
   color: black;

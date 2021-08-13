@@ -10,6 +10,7 @@ function MyBookshelf() {
 
   const [ books, setBooks ] = useState([]);
   const [ isAddBook, setIsAddBook ] = useState(false);
+  const [ groupHash, setGroupHash ] = useState({});
 
   useEffect(() => {
     fetch(`${baseURL}books`)
@@ -18,6 +19,19 @@ function MyBookshelf() {
         setBooks(books);
       });
   }, []);
+
+  useEffect(() => {
+    fetch('http://localhost:9393/groups')
+      .then(r => r.json())
+      .then(groupObjects => {
+        console.log("groupObjects", groupObjects);
+        groupObjects.forEach(groupObject => {
+          groupHash[groupObject.group_name] = groupObject.id;
+        });        
+        setGroupHash(groupHash);
+        console.log("groupHash", groupHash);
+      });      
+  }, [groupHash]);
 
   function handleAddBookClick() {
     setIsAddBook(!isAddBook);
@@ -41,7 +55,9 @@ function MyBookshelf() {
         ? <AddBookForm isAddBook={isAddBook} 
             setIsAddBook={setIsAddBook}
             books={books}
-            setBooks={setBooks} />
+            setBooks={setBooks}
+            groupHash={groupHash}
+            setGroupHash={setGroupHash} />
         : <SummaryBar books={books} setBooks={setBooks} />
       }         
     </div>

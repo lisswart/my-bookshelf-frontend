@@ -16,22 +16,36 @@ function SummaryBar({ books, setBooks }) {
   const [ statuses, setStatuses ] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:9393/statuses')
+    const myAbortController = new AbortController();
+    fetch('http://localhost:9393/statuses', 
+      { signal: myAbortController.signal })
       .then(r => r.json())
       .then(statuses => setStatuses(statuses));
+      return () => {
+        myAbortController.abort();
+      };
   }, []);
 
   useEffect(() => {
-    fetch('http://localhost:9393/tags')
+    const myAbortController = new AbortController();
+    fetch('http://localhost:9393/tags', 
+      { signal: myAbortController.signal })
       .then(r => r.json())
-      .then(tags => 
-        setTags(tags));
+      .then(tags => setTags(tags));
+      return () => {
+        myAbortController.abort();
+      };
   }, []);
 
   useEffect(() => {
-    fetch('http://localhost:9393/groups')
+    const myAbortController = new AbortController();
+    fetch('http://localhost:9393/groups', 
+      { signal: myAbortController.signal })
       .then(r => r.json())
       .then(groups => setGroups(groups));
+      return () => {
+        myAbortController.abort();
+      };
   }, []);
 
   function populateGroups() {
@@ -69,7 +83,7 @@ function SummaryBar({ books, setBooks }) {
           {statuses && populateStatuses()}
         </div>
 
-        <p>Groups/Series:</p>
+        <p>Groups/ Series:</p>
         <div className="tags-container" style={{ marginTop: "1rem", 
           marginLeft: "0.5rem"}}>          
           {groups && populateGroups()}

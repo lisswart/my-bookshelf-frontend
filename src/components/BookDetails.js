@@ -3,7 +3,6 @@ import BookTags from './BookTags';
 import EditForm from './EditForm';
 import NoteForm from './NoteForm';
 import TagForm from './TagForm';
-import GroupForm from './GroupForm';
 import NotePage from './NotePage';
 import { useEffect, useState } from 'react';
 
@@ -17,20 +16,18 @@ function BookDetails({ book, isOnEditMode, editBook,
     const [ booktags, setBooktags ] = useState([]);
 
     useEffect(() => {
-      fetch(`${baseURL}booktags/${book.id}`)
+      const myAbortController = new AbortController();
+      fetch(`${baseURL}booktags/${book.id}`, 
+      { signal: myAbortController.signal })
         .then(r => r.json())
         .then(book => {          
           const bookTags = book.tags.map(tag => tag.tag_name);
           setBooktags(bookTags);
         });
-        // need to add a cleanup function
+        return () => {
+          myAbortController.abort();
+        };
     }, [book.id]);
-    // Warning: Can't perform a React state update on an unmounted component. This is a no-op, but it indicates a memory leak in your application. To fix, cancel all subscriptions and asynchronous tasks in a useEffect cleanup function.
-    // at BookDetails (http://localhost:3000/static/js/main.chunk.js:741:3)
-    // at div
-    // at BookToolbar (http://localhost:3000/static/js/main.chunk.js:1270:3)
-    // at div
-    // at DisplayBook (http://localhost:3000/static/js/main.chunk.js:1842:3)
     
   return (
     <div className="book-details">
@@ -57,12 +54,7 @@ function BookDetails({ book, isOnEditMode, editBook,
                 ? <TagForm booktags={booktags} 
                     setIsAddTag={setIsAddTag} />
                 : <></>
-              }
-              {
-                isAddGroup
-                ? <GroupForm book={book} />
-                : <></>       
-              }          
+              }        
             </div>
         }
           <div className="desc-tags-wrapper">
