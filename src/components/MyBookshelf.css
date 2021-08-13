@@ -25,12 +25,11 @@ h2 {
 input.searchbar {
   width:97.5vmin;
   height: 1.5em;
-  background-color: antiquewhite;
+  background-color: lightgray;
   border: none;
   border-radius: 5px;
   padding-left: 0.25rem;
   color: grey;
-  outline: none;
   font-size: large;
   position: fixed;
   margin-left: 2rem;
@@ -53,23 +52,26 @@ input.searchbar {
 
 .add-book-form > textarea {
   min-height: 15rem;
-  background-color: bisque;
+  background-color: silver;
   border-radius: 5px;
   border: none;
+  font-size: 14pt;
 }
 
 .add-book-form > input[type=text] {
-  background-color: bisque;
+  background-color: silver;
   height: 1.5rem;
   border: none;
   border-radius: 5px;
+  font-size: 12pt;
 }
 
 .add-book-form > select {
-  background-color: bisque;
+  background-color: silver;
   height: 1.5rem;
   border: none;
   border-radius: 5px;
+  font-size: 12pt;
 }
 
 .add-book-form-buttons-wrapper > input[type=submit] {
@@ -77,6 +79,7 @@ input.searchbar {
   color:rgb(37, 42, 48);
   border: none;
   font-weight: bolder;
+  font-size: 12pt;
   margin: 2rem 2rem 0 0;
   height: 1.75rem;
   border-radius: 5px;
@@ -91,6 +94,7 @@ input.searchbar {
   background-image: repeating-radial-gradient(lemonchiffon, rosybrown);  
   color:rgb(37, 42, 48);
   font-weight: bolder;
+  font-size: 12pt;
   border: none;
   height: 1.75rem;
   border-radius: 5px;
@@ -116,26 +120,35 @@ input.searchbar {
 }
 
 .taglist {  
-  margin: 0.25rem 0.25rem 0.5rem 0;
+  margin: 0.25rem 0.25rem 0 0;
   font-family: monospace;
+}
+
+.tags-container {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 a {
   text-decoration: none;
-  color: whitesmoke;
-  background-color: sienna;
-  padding: 0 0.25rem 0.25rem 0.25rem;
+  color: sienna;
+  background-color: gainsboro;
+  padding: 0 0.25rem 0.15rem 0.25rem;
   margin: 0.25rem 0.25rem 0.5rem 0;
   border-radius: 5px;
-}
-
-a:visited {
-  color: aliceblue;
 }
 
 a:hover {
   color: maroon;
   background-color: snow;
+}
+
+a:focus {
+  border-bottom: 4px solid tomato;
+}
+
+a:visited {
+  color: darkblue;
 }
 
 .books {
@@ -180,10 +193,13 @@ a:hover {
   min-height: 6rem;
   background-color: lightgray;
   color: black;
+  border: none;
 }
 
-.edit-form > button {
+.edit-form > input[type=submit] {
   height: 1.1rem;
+  border: none;
+  background-color: yellow;
 }
 
 .form-buttons {

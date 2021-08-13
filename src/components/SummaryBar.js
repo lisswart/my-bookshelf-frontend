@@ -1,9 +1,13 @@
 import { useState, useEffect } from 'react';
-import DisplayBooksPanel from './DisplayBooksPanel';
+import { Switch, Route } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import Group from './Group';
 import Tag from './Tag';
 import Status from './Status';
+import AllBooks from './AllBooks';
+import BooksFilteredByStatus from './BooksFilteredByStatus';
+import BooksFilteredByTags from './BooksFilteredByTags';
+import BooksFilteredByGroup from './BooksFilteredByGroup';
 
 function SummaryBar({ books, setBooks }) {
 
@@ -60,23 +64,38 @@ function SummaryBar({ books, setBooks }) {
       </NavLink>
 
       <div style={{display: "flex", paddingLeft: "2rem"}}>
-        <div className="statuses-container" style={{ marginTop: "1rem"}}>
+        <div className="tags-container" style={{ marginTop: "1rem"}}>
           Read Status: 
           {statuses && populateStatuses()}
         </div>
-        <span className="groups-container" style={{ marginTop: "1rem", 
-          marginLeft: "2rem"}}>
-          Groups/Series: 
+
+        <p>Groups/Series:</p>
+        <div className="tags-container" style={{ marginTop: "1rem", 
+          marginLeft: "0.5rem"}}>          
           {groups && populateGroups()}
-        </span>
-        <span className="tags-container" style={{ marginTop: "1rem", 
-          marginLeft: "2rem"}}>
-          Tags: 
+        </div>
+
+        <p>Tags:</p>
+        <div className="tags-container" style={{ marginTop: "1rem", 
+          marginLeft: "0.5rem"}}>          
           {tags && populateTags()}
-        </span>
+        </div>
       </div>
             
-      <DisplayBooksPanel books={books} setBooks={setBooks} />
+      <Switch>
+        <Route exact path="/books">
+          <AllBooks books={books} setBooks={setBooks} />
+        </Route>
+        <Route path="/groups/:id">
+          <BooksFilteredByGroup books={books} setBooks={setBooks} />
+        </Route>
+        <Route path="/tags/:id">
+          <BooksFilteredByTags books={books} setBooks={setBooks} />
+        </Route>
+        <Route path="/statuses/:id">
+          <BooksFilteredByStatus books={books} setBooks={setBooks} />
+        </Route>
+      </Switch>
 
     </div>    
   );

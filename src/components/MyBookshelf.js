@@ -1,13 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Switch, Route } from 'react-router-dom';
 import './MyBookshelf.css';
 import SearchBar from './SearchBar';
 import SummaryBar from './SummaryBar';
 import AddBookForm from './AddBookForm';
-import AllBooks from './AllBooks';
-import BooksFilteredByStatus from './BooksFilteredByStatus';
-import BooksFilteredByTags from './BooksFilteredByTags.js';
-import BooksFilteredByGroup from './BooksFilteredByGroup';
+
 
 function MyBookshelf() {
   const baseURL = 'http://localhost:9393/';
@@ -47,21 +43,7 @@ function MyBookshelf() {
             books={books}
             setBooks={setBooks} />
         : <SummaryBar books={books} setBooks={setBooks} />
-      }
-      <Switch>
-        <Route exact path="/books">
-          <AllBooks books={books} setBooks={setBooks} />
-        </Route>
-        <Route path="/groups/:id">
-          <BooksFilteredByGroup books={books} setBooks={setBooks} />
-        </Route>
-        <Route path="tags/:id">
-          <BooksFilteredByTags books={books} setBooks={setBooks} />
-        </Route>
-        <Route path="statuses/:id">
-          <BooksFilteredByStatus books={books} setBooks={setBooks} />
-        </Route>
-      </Switch>      
+      }         
     </div>
   );
 }

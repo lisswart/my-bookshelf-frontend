@@ -19,7 +19,7 @@ function BookTags({ booktags }) {
   return (
     <div className="booktags">
       {
-        booktags.map((booktag, i) => <button key={i} className="tag selected"><strong>{booktag}</strong></button>)
+        booktags.map((booktag, i) => <button key={i}><strong>{booktag}</strong></button>)
       }
     </div>
   )
