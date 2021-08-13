@@ -38,7 +38,7 @@ function DisplayBooksPanel({ books, setBooks }) {
   }
 
   return (
-    <div className="books">
+    <div className="books sorted">
       {books.map(book => 
         <DisplayBook key={book.id} book={book} 
           books={books} setBooks={setBooks}

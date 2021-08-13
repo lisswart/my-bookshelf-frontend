@@ -61,6 +61,13 @@ input.searchbar {
   border-radius: 5px;
 }
 
+.add-book-form > select {
+  background-color: antiquewhite;
+  height: 1.5rem;
+  border: none;
+  border-radius: 5px;
+}
+
 .add-book-form-buttons-wrapper > input[type=submit] {
   background-image: repeating-radial-gradient(lemonchiffon, rosybrown);  
   color:rgb(37, 42, 48);
@@ -102,8 +109,24 @@ input.searchbar {
   margin-right: 0.75rem;
 }
 
+.tags {
+  display: inline-block;
+}
+
+.taglist {
+  background-color: orange;
+  padding: 0 0.25rem;
+  margin: 0.25rem;
+  border-radius: 5px;
+}
+
 .books {
   margin: 2rem 2rem 2rem 2rem;
+  padding: 0 2rem;
+}
+
+.sorted {
+  border-left: 0.25rem solid skyblue;
 }
 
 .books .book {
@@ -301,15 +324,15 @@ input.searchbar {
   color: seashell;
 }
 
-.nav, a {
+a {
   text-decoration: none;
-  color: antiquewhite;
+  color: firebrick;
 }
 
-.nav, a:visited {
+a:visited {
   color: darkblue;
 }
 
-.nav, a:hover {
+a:hover {
   color: maroon;
 }

@@ -69,6 +69,15 @@ function AddBookForm({ isAddBook, setIsAddBook, books, setBooks }) {
         <input type="text" onChange={handleEntryChange}
           name="book_group" value={formState.book_group} />
 
+        <label>Read Status: </label>
+        <select >
+          <option>Not Begun</option>
+          <option>In Progress</option>
+          <option>Completed</option>
+          <option>Abandoned</option>
+          <option>None</option>
+        </select>
+
         <div className="add-book-form-buttons-wrapper">
           <input type="submit" value="Add" />
           <button>cancel</button>

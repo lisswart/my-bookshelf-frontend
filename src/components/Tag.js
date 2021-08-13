@@ -14,7 +14,7 @@ function Tag({ tag, setBooks }) {
   }
 
   return (
-    <div>
+    <div className="taglist">
       <NavLink to={`/tags/${id}`} onClick={handleTagClick}>
         {tag_name}
       </NavLink>

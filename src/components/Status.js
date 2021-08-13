@@ -14,7 +14,7 @@ function Status({ status, setBooks }) {
   }
 
   return (
-    <div>
+    <div className="taglist">
       <NavLink to={`/statuses/${id}`} onClick={handleStatusClick}>
         {read_status}
       </NavLink>

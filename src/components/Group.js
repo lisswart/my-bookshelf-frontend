@@ -14,7 +14,7 @@ function Group({ group, setBooks }) {
   }
 
   return (
-    <div>
+    <div  className="taglist">
       <NavLink to={`/groups/${id}`} onClick={handleGroupClick}>
         {group_name}
       </NavLink>

@@ -14,41 +14,34 @@ function SummaryBar({ books, setBooks }) {
   useEffect(() => {
     fetch('http://localhost:9393/statuses')
       .then(r => r.json())
-      .then(statuses => {
-        console.log(statuses);
-        setStatuses(statuses);
-      });
+      .then(statuses => setStatuses(statuses));
   }, []);
 
   useEffect(() => {
     fetch('http://localhost:9393/tags')
       .then(r => r.json())
-      .then(tags => {
-        console.log(tags);
-        setTags(tags);
-      });
+      .then(tags => 
+        setTags(tags));
   }, []);
 
   useEffect(() => {
     fetch('http://localhost:9393/groups')
       .then(r => r.json())
-      .then(groups => {
-        console.log(groups);
-        setGroups(groups);
-      });
+      .then(groups => setGroups(groups));
   }, []);
 
   function populateGroups() {
     return groups.map(group => (
-        <Group key={group.id} group={group} 
-               setBooks={setBooks} />
+          <Group key={group.id} group={group} 
+            setBooks={setBooks} />
     ));
   }
 
   function populateTags() {
     return tags.map(tag => (
         <Tag key={tag.id} tag={tag} 
-             setBooks={setBooks} />
+             setBooks={setBooks}
+             className="tags" />
     ));
   }
 
@@ -62,22 +55,25 @@ function SummaryBar({ books, setBooks }) {
   return (    
     <div className="summary-bar">
 
-      <NavLink to="/books" style={{marginLeft: "2rem"}}>
+      <NavLink to="/books" style={{marginLeft: "2rem", color: "black"}}>
         Books: {books.length}
       </NavLink>
 
       <div style={{display: "flex", paddingLeft: "2rem"}}>
-        <span className="groups-container" style={{ marginTop: "1rem"}}>
-          Groups/Series: {groups && populateGroups()}
+        <div className="statuses-container" style={{ marginTop: "1rem"}}>
+          Read Status: 
+          {statuses && populateStatuses()}
+        </div>
+        <span className="groups-container" style={{ marginTop: "1rem", 
+          marginLeft: "2rem"}}>
+          Groups/Series: 
+          {groups && populateGroups()}
         </span>
         <span className="tags-container" style={{ marginTop: "1rem", 
           marginLeft: "2rem"}}>
-          Tags: {tags && populateTags()}
+          Tags: 
+          {tags && populateTags()}
         </span>
-        <div className="statuses-container" style={{ marginTop: "1rem", 
-          marginLeft: "2rem"}}>
-          Read Status: {statuses && populateStatuses()}
-        </div>
       </div>
             
       <DisplayBooksPanel books={books} setBooks={setBooks} />
