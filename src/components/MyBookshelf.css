@@ -17,7 +17,9 @@ h2 {
 .h2-add-book-wrapper > button {
   margin: auto 3rem 0.35rem 3rem;
   height: 2rem;
-  background-image: repeating-radial-gradient(lemonchiffon, rosybrown);
+  background-color: royalblue;
+  color: royalblue;
+  font-weight: 900;
 }
 
 input.searchbar {
@@ -39,30 +41,32 @@ input.searchbar {
   display: flex;
   flex-direction: column;
   margin: 2rem 2rem 2rem 2rem;
+  padding: 2rem 2rem 2rem 2rem;
+  background-color: royalblue;
 }
 
 .add-book-form > label {
-  color: blue;
+  color: snow;
   font-weight: bolder;
   margin-top: 1rem;
 }
 
 .add-book-form > textarea {
   min-height: 15rem;
-  background-color: antiquewhite;
+  background-color: bisque;
   border-radius: 5px;
   border: none;
 }
 
 .add-book-form > input[type=text] {
-  background-color: antiquewhite;
+  background-color: bisque;
   height: 1.5rem;
   border: none;
   border-radius: 5px;
 }
 
 .add-book-form > select {
-  background-color: antiquewhite;
+  background-color: bisque;
   height: 1.5rem;
   border: none;
   border-radius: 5px;
@@ -101,32 +105,47 @@ input.searchbar {
   margin: 0.25rem 0.25rem 0.35rem 0.25rem;
   font-size: small;
   font-weight: bold;
+  padding-top: 2rem;
   margin-bottom: 1rem;
-  color: lavenderblush;
+  color: snow;
+  background-color: royalblue;
 }
 
 .summary-bar > span {
   margin-right: 0.75rem;
 }
 
-.tags {
-  display: inline-block;
+.taglist {  
+  margin: 0.25rem 0.25rem 0.5rem 0;
+  font-family: monospace;
 }
 
-.taglist {
-  background-color: orange;
-  padding: 0 0.25rem;
-  margin: 0.25rem;
+a {
+  text-decoration: none;
+  color: whitesmoke;
+  background-color: sienna;
+  padding: 0 0.25rem 0.25rem 0.25rem;
+  margin: 0.25rem 0.25rem 0.5rem 0;
   border-radius: 5px;
+}
+
+a:visited {
+  color: aliceblue;
+}
+
+a:hover {
+  color: maroon;
+  background-color: snow;
 }
 
 .books {
   margin: 2rem 2rem 2rem 2rem;
   padding: 0 2rem;
+  background-image:repeating-radial-gradient(lemonchiffon, royalblue);
 }
 
 .sorted {
-  border-left: 0.25rem solid skyblue;
+  border-left: 0.25rem solid silver;
 }
 
 .books .book {
@@ -322,17 +341,4 @@ input.searchbar {
 .status-filter {
   margin-left: 2rem;
   color: seashell;
-}
-
-a {
-  text-decoration: none;
-  color: firebrick;
-}
-
-a:visited {
-  color: darkblue;
-}
-
-a:hover {
-  color: maroon;
 }

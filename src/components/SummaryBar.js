@@ -55,7 +55,7 @@ function SummaryBar({ books, setBooks }) {
   return (    
     <div className="summary-bar">
 
-      <NavLink to="/books" style={{marginLeft: "2rem", color: "black"}}>
+      <NavLink to="/books" style={{marginLeft: "2rem"}}>
         Books: {books.length}
       </NavLink>
 
