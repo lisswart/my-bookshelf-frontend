@@ -8,7 +8,7 @@ import { useEffect, useState } from 'react';
 
 function BookDetails({ book, isOnEditMode, editBook,
   isAddNote, setIsAddNote, isAddTag, setIsAddTag, 
-  isAddGroup, setIsOnEditMode, addNotes }) {
+  isAddGroup, setIsOnEditMode, addNotes, tags }) {
 
   const baseURL = 'http://localhost:9393/';
   const [ isNotePage, setIsNotePage ] = useState(book.is_notes_added);
@@ -51,8 +51,9 @@ function BookDetails({ book, isOnEditMode, editBook,
               }
               {
                 isAddTag
-                ? <TagForm booktags={booktags} 
-                    setIsAddTag={setIsAddTag} />
+                ? <TagForm  
+                    setIsAddTag={setIsAddTag}
+                    tags={tags} />
                 : <></>
               }        
             </div>

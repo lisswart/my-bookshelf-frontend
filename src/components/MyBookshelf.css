@@ -16,7 +16,8 @@ h2 {
 
 .h2-add-book-wrapper > button {
   margin: auto 3rem 0.35rem 3rem;
-  height: 2rem;
+  padding: 0.25rem 0.25rem 3.5rem 0.25rem;
+  /* height: 5rem; */
   background-color: royalblue;
   color: royalblue;
   font-weight: 900;
@@ -200,7 +201,7 @@ a:visited {
 }
 
 .book-image .status {
-  font-size: 8pt;
+  font-size: 10pt;
   margin-right: 1em;
   color: cornsilk;
 }
@@ -211,26 +212,30 @@ a:visited {
 }
 
 .book-details .description {
-  font-size: small;
+  font-size: 12pt;
 }
 
 .title {
   color: aliceblue;
   margin-bottom: 0.2rem;
+  font-size: 12pt;
 }
 
 .author {
   color: honeydew;
+  font-size: 12pt;
 }
 
 .description {
   color: mintcream;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-weight: 500;
+  font-size: 12pt;
 }
 
 .book .booktags {
   margin-top: 0.5rem;
+  padding:0.25rem;
 }
 
 .book .booktags > button:focus {
@@ -248,9 +253,9 @@ a:visited {
   color: cornsilk;
   margin-right: 0.25rem;
   border: none;
-  height: 1rem;
   border-radius: 5px;
-  font-size: 4pt;
+  font-size: 10pt;
+  padding: 0.25rem;
 }
 
 .booktags {

@@ -1,6 +1,6 @@
 import DisplayBook from "./DisplayBook";
 
-function DisplayBooksPanel({ books, setBooks }) {
+function DisplayBooksPanel({ books, setBooks, tags }) {
 
   function editBook(bookId, bookEdits) {
     fetch(`http://localhost:9393/books/${bookId}`, {
@@ -41,7 +41,7 @@ function DisplayBooksPanel({ books, setBooks }) {
     <div className="books">
       {books.map(book => 
         <DisplayBook key={book.id} book={book} 
-          books={books} setBooks={setBooks}
+          books={books} setBooks={setBooks} tags={tags}
           editBook={editBook} addNotes={addNotes} />
       )}
     </div>

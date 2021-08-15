@@ -1,17 +1,17 @@
 import { useState } from 'react';
 
-function AddBookForm({ isAddBook, setIsAddBook, books, setBooks, groupHash, setGroupHash }) {
+function AddBookForm({ isAddBook, setIsAddBook, 
+  books, setBooks, groups, setGroups, statuses, 
+  setStatuses, groupHash, setGroupHash }) {
 
   const [ formState, setFormState ] = useState({
     book_title: "",
     book_author: "",
-    book_description: "",
-    group_label: "",
-    read_status: ""
+    book_description: ""
   });
   
-  const [ selectedStatus, setSelectedStatus ] = useState(null);
-  const [ assignToGroup, setAssignToGroup ] = useState(null);
+  const [ selectedStatus, setSelectedStatus ] = useState('1');
+  const [ selectedGroup, setSelectedGroup ] = useState('1');
 
   function addBook(book) {
     fetch('http://localhost:9393/add-book', {
@@ -29,70 +29,38 @@ function AddBookForm({ isAddBook, setIsAddBook, books, setBooks, groupHash, setG
   function handleEntryChange(event) {
     const fieldName = event.target.name;
     const userInput = event.target.value;
-    setFormState({
+    setFormState( formState => ({
       ...formState,
       [fieldName]: userInput
-    });
+    }));
+  }
+
+  function handleSelectGroupClick(event) {
+    setSelectedGroup(event.target.value);
   }
 
   function handleSelectStatusClick(event) {
-    if(event.target.value === "Not Begun")
-      setSelectedStatus(1);
-    else if(event.target.value === "In Progress")
-      setSelectedStatus(2);
-    else if(event.target.value === "Completed")
-      setSelectedStatus(3);
-    else if(event.target.value === "Abandoned")
-      setSelectedStatus(4);
-    else
-      setSelectedStatus(5);
+    setSelectedStatus(event.target.value);
   }
 
   function handleSubmit(event) {
     event.preventDefault();
-    for(const key in groupHash) {
-      console.log(formState.group_label);
-      console.log(`groupHash.${key}= ${groupHash[key]}`);
-      if(formState.group_label.includes(key)) {        
-        console.log(parseInt(groupHash[key]));
-        let num = parseInt(groupHash[key]);
-        console.log(num);
-        setAssignToGroup(num); // herein lies the problem
-        console.log(assignToGroup); // logs null
-        const addingBook = {
-          book_title: formState.book_title,
-          book_author: formState.book_author,
-          book_description: formState.book_description,
-          status_id: selectedStatus,
-          group_id: 3
-        };
-        addBook(addingBook);
-        setIsAddBook(!isAddBook);
-        setFormState({
-          book_title: "",
-          book_author: "",
-          book_description: "",
-          read_status: "",
-          group_label: ""
-        });
-      } 
-      // else {
-      //   addGroup(formState.group_label);
-      // }
-    }   
+    const addingBook = {
+      book_title: formState.book_title,
+      book_author: formState.book_author,
+      book_description: formState.book_description,
+      status_id: selectedStatus,
+      group_id: selectedGroup
+    };
+    console.log(addingBook);
+    addBook(addingBook);
+    setIsAddBook(!isAddBook);
+    setFormState({
+      book_title: "",
+      book_author: "",
+      book_description: ""
+    });   
   }
-
-  // function addGroup(group) {
-  //   fetch(`http://localhost:9393/groups`, {
-  //     method: "POST",
-  //     headers: {"Content-Type": "application/json"},
-  //     body: JSON.stringify(group)
-  //   })
-  //     .then(r => r.json())
-  //     .then(newGroup => {
-  //       console.log(newGroup);
-  //     });
-  // }
 
   return (
       <form className="add-book-form" onSubmit={handleSubmit}>
@@ -110,16 +78,23 @@ function AddBookForm({ isAddBook, setIsAddBook, books, setBooks, groupHash, setG
           value={formState.book_description} />
 
         <label>Group: </label>
-        <input type="text" onChange={handleEntryChange}
-          name="group_label" value={formState.group_label} />
+        <select onChange={handleSelectGroupClick}>
+          {
+            groups.map(group => 
+              <option key={group.id} value={group.id}>
+                {group.group_name}
+              </option>)
+          }
+        </select>
 
         <label>Read Status: </label>
         <select onChange={handleSelectStatusClick}>
-          <option value="Not Begun">Not Begun</option>
-          <option value="In Progress">In Progress</option>
-          <option value="Completed">Completed</option>
-          <option value="Abandoned">Abandoned</option>
-          <option value="None">None</option>
+          {
+            statuses.map(status => (
+              <option key={status.id} value={status.id}>
+                {status.read_status}
+              </option>))
+          }
         </select>
 
         <input type="submit" value="Add" />

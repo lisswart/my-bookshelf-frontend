@@ -4,13 +4,11 @@ import SearchBar from './SearchBar';
 import SummaryBar from './SummaryBar';
 import AddBookForm from './AddBookForm';
 
-
 function MyBookshelf() {
   const baseURL = 'http://localhost:9393/';
 
   const [ books, setBooks ] = useState([]);
   const [ isAddBook, setIsAddBook ] = useState(false);
-  const [ groupHash, setGroupHash ] = useState({});
 
   useEffect(() => {
     fetch(`${baseURL}books`)
@@ -20,21 +18,47 @@ function MyBookshelf() {
       });
   }, []);
 
+  const [ groups, setGroups ] = useState([])
+  const [ tags, setTags ] = useState([]);
+  const [ statuses, setStatuses ] = useState([]);
+
   useEffect(() => {
-    fetch('http://localhost:9393/groups')
+    const myAbortController = new AbortController();
+    fetch('http://localhost:9393/statuses', 
+      { signal: myAbortController.signal })
       .then(r => r.json())
-      .then(groupObjects => {
-        console.log("groupObjects", groupObjects);
-        groupObjects.forEach(groupObject => {
-          groupHash[groupObject.group_name] = groupObject.id;
-        });        
-        setGroupHash(groupHash);
-        console.log("groupHash", groupHash);
-      });      
-  }, [groupHash]);
+      .then(statuses => setStatuses(statuses));
+      return () => {
+        myAbortController.abort();
+      };
+  }, []);
+
+  useEffect(() => {
+    const myAbortController = new AbortController();
+    fetch('http://localhost:9393/tags', 
+      { signal: myAbortController.signal })
+      .then(r => r.json())
+      .then(tags => setTags(tags));
+      return () => {
+        myAbortController.abort();
+      };
+  }, []);
+
+  useEffect(() => {
+    const myAbortController = new AbortController();
+    fetch('http://localhost:9393/groups', 
+      { signal: myAbortController.signal })
+      .then(r => r.json())
+      .then(promisedObjects => {
+        setGroups(promisedObjects);
+      });
+      return () => {
+        myAbortController.abort();
+      };
+  }, []);
 
   function handleAddBookClick() {
-    setIsAddBook(!isAddBook);
+    setIsAddBook(isAddBook => !isAddBook);
   }
 
   return (
@@ -56,9 +80,13 @@ function MyBookshelf() {
             setIsAddBook={setIsAddBook}
             books={books}
             setBooks={setBooks}
-            groupHash={groupHash}
-            setGroupHash={setGroupHash} />
-        : <SummaryBar books={books} setBooks={setBooks} />
+            groups={groups} 
+            setGroups={setGroups}
+            statuses={statuses}
+            setStatuses={setStatuses}
+            />
+        : <SummaryBar books={books} setBooks={setBooks} 
+            groups={groups} tags={tags} statuses={statuses} />
       }         
     </div>
   );

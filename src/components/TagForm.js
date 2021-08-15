@@ -1,11 +1,12 @@
 import { useState } from 'react';
+// import { components } from 'react-select';
 
-function TagForm({ tags, setIsAddTag, isAddTag }) {
+function TagForm({ tags, setIsAddTag }) {
 
   const baseURL = 'http://localhost:9393/';
 
   const [ formState, setFormState ] = useState({
-    tags: tags
+    tags: []
   });
 
   function addTags(tags) {
@@ -18,7 +19,7 @@ function TagForm({ tags, setIsAddTag, isAddTag }) {
       .then(tags => console.log(tags));
   }
 
-  function handleEntryChange(event) {
+  function handleSelect(event) {
     const fieldName = event.target.name;
     const userInput = event.target.value;
     setFormState({
@@ -29,18 +30,22 @@ function TagForm({ tags, setIsAddTag, isAddTag }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    const tags = {tag_name: formState.tags};
     tags.forEach(tag => addTags(tag))
-    setIsAddTag(!isAddTag);
-    addTags(tags);
+    setIsAddTag(false);
   }
 
   return (
     <div>
       <form className="edit-form" onSubmit={handleSubmit}>
         <label>Tags: </label>
-        <input onChange={handleEntryChange} 
-          name="tags" value={formState.tags} />
+        <select onChange={handleSelect} 
+          name="tags" id="tags" multiple="multiple">
+          {
+            tags.map(tag => 
+              <option key={tag.id} value={tag.id}>{tag.tag_name}</option>)
+          }
+        </select>
+        <input type="submit" />
       </form>
     </div>
   );

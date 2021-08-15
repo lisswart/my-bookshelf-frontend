@@ -1,5 +1,3 @@
-
-
 function NotePage({ book }) {
 
   const notes = book.notes;
@@ -10,8 +8,10 @@ function NotePage({ book }) {
       {
         notes === ""
         ? <></>
-        : lines.map((line, i) => <p key={i} 
-            className="lines">{line}</p>)
+        : lines.map((line, i) => 
+            <p key={i} className="lines">
+              {line}
+            </p>)
       }
     </div>
   );

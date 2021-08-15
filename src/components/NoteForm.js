@@ -51,7 +51,9 @@ function NoteForm({ book, isAddNote, setIsAddNote, addNotes, setIsNotePage }) {
       <form className="edit-form" onSubmit={handleSubmit}>
         <label>Notes: </label>
         <textarea onChange={handleEntryChange} 
-          name="notes" value={formState.notes}>{book.notes}</textarea>
+          name="notes" value={formState.notes}>
+            {book.notes}
+          </textarea>
         <input type="submit" value="Add Notes" />
       </form>
     </div>

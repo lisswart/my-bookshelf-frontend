@@ -1,9 +1,9 @@
 import DisplayBooksPanel from './DisplayBooksPanel';
 
-function BooksFilteredByStatus({ books, setBooks }) {
+function BooksFilteredByStatus({ books, setBooks, tags }) {
   return (    
     <DisplayBooksPanel books={books}
-      setBooks={setBooks} />
+      setBooks={setBooks} tags={tags} />
   );
 }
 

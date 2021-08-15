@@ -2,7 +2,8 @@ import { useState } from 'react';
 import BookImage from './BookImage';
 import BookDetails from './BookDetails';
 
-function BookToolbar({ book, editBook, books, setBooks, addNotes }) {
+function BookToolbar({ book, editBook, books, 
+  tags, setBooks, addNotes }) {
 
   const [ isOnEditMode, setIsOnEditMode ] = useState(false);
   const [ isAddNote, setIsAddNote ] = useState(false);
@@ -62,6 +63,7 @@ function BookToolbar({ book, editBook, books, setBooks, addNotes }) {
         addNotes={addNotes}
         isAddTag={isAddTag}
         setIsAddTag={setIsAddTag}
+        tags={tags}
         // isAddGroup={isAddGroup} 
         />
       <BookImage book={book} />

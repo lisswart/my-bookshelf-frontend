@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import Group from './Group';
@@ -9,44 +9,8 @@ import BooksFilteredByStatus from './BooksFilteredByStatus';
 import BooksFilteredByTags from './BooksFilteredByTags';
 import BooksFilteredByGroup from './BooksFilteredByGroup';
 
-function SummaryBar({ books, setBooks }) {
-
-  const [ groups, setGroups ] = useState([])
-  const [ tags, setTags ] = useState([]);
-  const [ statuses, setStatuses ] = useState([]);
-
-  useEffect(() => {
-    const myAbortController = new AbortController();
-    fetch('http://localhost:9393/statuses', 
-      { signal: myAbortController.signal })
-      .then(r => r.json())
-      .then(statuses => setStatuses(statuses));
-      return () => {
-        myAbortController.abort();
-      };
-  }, []);
-
-  useEffect(() => {
-    const myAbortController = new AbortController();
-    fetch('http://localhost:9393/tags', 
-      { signal: myAbortController.signal })
-      .then(r => r.json())
-      .then(tags => setTags(tags));
-      return () => {
-        myAbortController.abort();
-      };
-  }, []);
-
-  useEffect(() => {
-    const myAbortController = new AbortController();
-    fetch('http://localhost:9393/groups', 
-      { signal: myAbortController.signal })
-      .then(r => r.json())
-      .then(groups => setGroups(groups));
-      return () => {
-        myAbortController.abort();
-      };
-  }, []);
+function SummaryBar({ books, setBooks, 
+  groups, tags, statuses }) {  
 
   function populateGroups() {
     return groups.map(group => (
@@ -98,16 +62,20 @@ function SummaryBar({ books, setBooks }) {
             
       <Switch>
         <Route exact path="/books">
-          <AllBooks books={books} setBooks={setBooks} />
+          <AllBooks books={books} 
+            setBooks={setBooks} tags={tags} />
         </Route>
         <Route path="/groups/:id">
-          <BooksFilteredByGroup books={books} setBooks={setBooks} />
+          <BooksFilteredByGroup books={books} 
+            setBooks={setBooks} tags={tags} />
         </Route>
         <Route path="/tags/:id">
-          <BooksFilteredByTags books={books} setBooks={setBooks} />
+          <BooksFilteredByTags books={books} 
+            setBooks={setBooks} tags={tags} />
         </Route>
         <Route path="/statuses/:id">
-          <BooksFilteredByStatus books={books} setBooks={setBooks} />
+          <BooksFilteredByStatus books={books} 
+            setBooks={setBooks} tags={tags} />
         </Route>
       </Switch>
 
