@@ -13,24 +13,33 @@ function SummaryBar({ books, setBooks,
   groups, tags, statuses }) {  
 
   function populateGroups() {
-    return groups.map(group => (
-          <Group key={group.id} group={group} 
-            setBooks={setBooks} />
-    ));
+    return groups.map(group => {
+      return (
+        <Group key={group.id} 
+          group={group} 
+          setBooks={setBooks} 
+          books={books} />
+      );
+    });
   }
 
   function populateTags() {
-    return tags.map(tag => (
+    return tags.map(tag => {
+      return (
         <Tag key={tag.id} tag={tag} 
-             setBooks={setBooks}
-             className="tags" />
-    ));
+          setBooks={setBooks} 
+          books={books}
+          className="tags" />
+      );
+    });
   }
 
   function populateStatuses() {
     return statuses.map(status => (
-        <Status key={status.id} status={status} 
-                setBooks={setBooks}/>
+      <Status key={status.id} 
+        status={status} 
+        setBooks={setBooks} 
+        books={books} />
     ));
   }
 

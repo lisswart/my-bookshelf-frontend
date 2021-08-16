@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 
-function Status({ status, setBooks }) {
+function Status({ status, setBooks, books }) {
 
   const { id, read_status } = status;
 
@@ -8,15 +8,19 @@ function Status({ status, setBooks }) {
     fetch(`http://localhost:9393/statuses/${id}`)
       .then(r => r.json())
       .then(booksByStatus => {
-        console.log(booksByStatus);
         setBooks(booksByStatus.books);
       });
+  }
+
+  function extractNumberOfBooks() {
+    const length = books.filter(book => book.status_id === id);
+    return length.length;
   }
 
   return (
     <div className="taglist">
       <NavLink to={`/statuses/${id}`} onClick={handleStatusClick}>
-        {read_status}
+        {read_status}: {extractNumberOfBooks()}
       </NavLink>
     </div>
   );
